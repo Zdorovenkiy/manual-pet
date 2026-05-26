@@ -1,0 +1,17 @@
+.swiper {
+    height: 595px;
+    width: 100%;
+    border-bottom: 1px dashed $font-color-grey;
+    display: flex;
+
+    &__info {
+      height: 100%;
+      width: 50% !important;
+    }
+
+    &__thumbnail {
+      height: 100%;
+      width: 50%;
+      position: relative;
+    }
+}

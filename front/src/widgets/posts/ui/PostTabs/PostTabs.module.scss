@@ -1,0 +1,29 @@
+.postTabs {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  letter-spacing: 1px;
+
+  &__element {
+    display: flex;
+    gap: 1px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    color: $font-color-grey;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $font-color-lightgrey;
+    }
+
+    &.active {
+      color: $font-color-black;
+      background: $background-tab;
+    }
+
+    &_count {
+      font-size: 11px;
+    }
+  }
+}

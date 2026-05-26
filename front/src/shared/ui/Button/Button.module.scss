@@ -1,0 +1,15 @@
+.button {
+  width: 205px;
+  height: 48px;
+  border-radius: 22px;
+  border: none;
+  background: $button-dark;
+  color: $font-color-white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

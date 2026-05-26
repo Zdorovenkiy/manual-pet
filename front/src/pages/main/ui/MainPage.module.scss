@@ -1,0 +1,9 @@
+.mainPage {
+  height: 100%;
+  
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,30 @@
+.headerNav {
+  display: flex;
+  gap: 50px;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  align-items: center;
+  text-wrap: nowrap;
+  
+  a {
+    text-decoration: none;
+    color: $font-color-black;
+  }
+
+  &_dropdown {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    svg {
+      transition: transform 0.3s ease;
+      color: $font-color-black;
+    }
+    &:hover {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.footerLogo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &_image {
+    width: 385px;
+    img {
+      width: 100%;
+      filter: invert(1);
+    }
+  }
+  &_copyright {
+    font-size: 18px;
+  }
+}

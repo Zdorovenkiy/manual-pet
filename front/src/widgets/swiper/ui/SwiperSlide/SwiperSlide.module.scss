@@ -1,0 +1,23 @@
+.slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 180px;
+  padding: 32px 57px;
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    p {
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 64px;
+      font-weight: 400;
+      letter-spacing: -2px;
+      width: 500px;
+      line-height: 65px;
+    }
+  }
+}

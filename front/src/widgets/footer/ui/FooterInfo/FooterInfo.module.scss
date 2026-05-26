@@ -1,0 +1,27 @@
+.footerInfo {
+  display: flex;
+  width: 100%;
+  gap: 155px;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+    &_title {
+      margin: 0 0 24px 0;
+      font-family: "FragmentMono";
+      text-transform: uppercase;
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: $font-color-lightgrey;
+    }
+
+    a {
+      text-decoration: none;
+      color: $font-color-white;
+      width: fit-content;
+      font-size: 17px;
+    }
+  }
+}

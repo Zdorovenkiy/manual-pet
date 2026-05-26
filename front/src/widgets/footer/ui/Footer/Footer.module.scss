@@ -1,0 +1,16 @@
+@use "@app/styles/fonts.scss";
+
+.footer {
+  // background: black;
+  background: #222222;
+  background: linear-gradient(90deg,rgba(34, 34, 34, 1) 15%, rgba(40, 40, 40, 1) 50%, rgba(34, 34, 34, 1) 85%);
+  height: 470px;
+
+  &__container {
+    padding: 14px 58px;
+    color: $font-color-white;
+    display: flex;
+    gap: 228px;
+    height: 100%;
+  }
+}

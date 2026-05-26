@@ -1,0 +1,10 @@
+@use "@app/styles/fonts.scss";
+
+.posts {
+  &__container {
+    padding: 38px 57px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+}
