@@ -14,7 +14,6 @@ export type Props = {
 function Button({children, width, height, color, background, style, onClick}: PropsWithChildren<Props>) {
 
   return (
-    <>
       <button 
         className={styles.button}
         style={{
@@ -26,10 +25,8 @@ function Button({children, width, height, color, background, style, onClick}: Pr
         }}
         onClick={onClick}
       >
-        asd
         {children}
       </button>
-    </>
   )
 }
 
