@@ -1,5 +1,5 @@
 import styles from "./FooterLogo.module.scss";
-import Logo from "@shared/assets/Logo.png";
+import Logo from "@shared/assets/images/Logo.png";
 
 type Props = {}
 

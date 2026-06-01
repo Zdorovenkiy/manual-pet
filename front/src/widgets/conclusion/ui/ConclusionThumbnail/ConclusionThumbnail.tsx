@@ -1,5 +1,5 @@
 import styles from "./ConclusionThumbnail.module.scss";
-import thumbnail from "@shared/assets/background1.jpg";
+import thumbnail from "@shared/assets/images/background1.jpg";
 
 type Props = {
   opacity: number;

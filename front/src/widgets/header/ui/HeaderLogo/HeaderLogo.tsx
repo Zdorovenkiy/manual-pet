@@ -1,4 +1,4 @@
-import Logo from "@shared/assets/Logo.png";
+import Logo from "@shared/assets/images/Logo.png";
 import styles from "./HeaderLogo.module.scss";
 
 type Props = {}

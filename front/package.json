@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "fsd-linter": "npx steiger ./src",
-    "fsd-linter-fix": "npx steiger ./src --fix"
+    "fsd-linter-fix": "npx steiger ./src --fix",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "keen-slider": "^6.8.6",
@@ -34,6 +36,18 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
-    "vite-plugin-svgr": "^5.2.0"
+    "vite-plugin-svgr": "^5.2.0",
+    "storybook": "^10.4.1",
+    "@storybook/react-vite": "^10.4.1",
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-vitest": "^10.4.1",
+    "@storybook/addon-a11y": "^10.4.1",
+    "@storybook/addon-docs": "^10.4.1",
+    "@storybook/addon-onboarding": "^10.4.1",
+    "eslint-plugin-storybook": "^10.4.1",
+    "vitest": "^4.1.8",
+    "playwright": "^1.60.0",
+    "@vitest/browser-playwright": "^4.1.8",
+    "@vitest/coverage-v8": "^4.1.8"
   }
 }

@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/Button'
 import styles from "./PostLoadMore.module.scss";
-import { buttonStyles } from '@/shared/styleTypes/buttonStyles';
+import { buttonStyles } from '@/shared/model/styles/buttonStyles';
 
 type Props = {}
 

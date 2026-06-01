@@ -1,8 +1,15 @@
-type Props = {}
+import styles from "./NotFoundPage.module.scss";
+import { NotFound } from "@/widgets/notFound";
 
+type Props = {}
 function NotFoundPage({}: Props) {
   return (
-    <div>NotFoundPage</div>
+    <div className={styles.notFoundPage}>
+      <div className={styles.notFoundPage__container}>
+        <NotFound />
+      </div>
+      
+    </div>
   )
 }
 

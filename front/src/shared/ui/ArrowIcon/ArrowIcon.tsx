@@ -1,5 +1,5 @@
 import React from 'react'
-import Arrow from "@shared/icons/arrow-slide.svg?react";
+import Arrow from "@shared/assets/icons/arrow-slide.svg?react";
 
 type Props = {
   width?: number;

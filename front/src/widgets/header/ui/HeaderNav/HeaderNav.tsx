@@ -1,6 +1,6 @@
 import styles from "./HeaderNav.module.scss"
 import { NavLink } from 'react-router-dom'
-import Arrow from "@shared/icons/chevron-down.svg?react"
+import Arrow from "@shared/assets/icons/chevron-down.svg?react"
 
 type Props = {
   open: () => void,

@@ -1,5 +1,7 @@
 import { MainPage } from '@/pages/main';
 import { NotFoundPage } from '@/pages/notFound';
+import { SignIn } from '@/pages/signIn';
+import { SignUp } from '@/pages/signUp';
 import type { RouteObject } from 'react-router-dom';
 
 export const ROUTES = {
@@ -14,6 +16,18 @@ export const ROUTES = {
       name: "Главная",
       path: "/",
       element: <MainPage />,
+    },
+    SIGN_IN: {
+      key: "sign-in",
+      name: "Авторизация",
+      path: "/sign-in",
+      element: <SignIn />,
+    },
+    SIGN_UP: {
+      key: "sign-up",
+      name: "Регистрация",
+      path: "/sign-up",
+      element: <SignUp />,
     },
 } as const;
 

@@ -1,30 +1,36 @@
 import type { CSSProperties, PropsWithChildren } from "react";
 import styles from "./Button.module.scss";
-import { buttonStyles } from "@/shared/styleTypes/buttonStyles";
+import { createPortal } from "react-dom";
 
 
-type Props = {
+export type Props = {
   width?: number; 
+  height?: number;
   background?: CSSProperties["background"];
   color?: CSSProperties["color"];
   style?: React.CSSProperties;
+  onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
 }
 
-function Button({children, width, color, background, style}: PropsWithChildren<Props>) {
+function Button({children, width, height, color, background, style, onClick}: PropsWithChildren<Props>) {
 
-  buttonStyles
   return (
+    <>
       <button 
         className={styles.button}
         style={{
           ...style,
           width: width,
-          color: color,
+          height: height,
+          color: "green",
           background: background
         }}
+        onClick={onClick}
       >
+        asd
         {children}
       </button>
+    </>
   )
 }
 

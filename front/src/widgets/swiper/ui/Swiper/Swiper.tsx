@@ -1,8 +1,8 @@
 import styles from "./Swiper.module.scss";
 import { useKeenSwiper } from '../../lib/useKeenSwiper/useKeenSwiper';
-import Image1 from "@shared/assets/slider1.jpg";
-import Image2 from "@shared/assets/slider2.jpg";
-import Image3 from "@shared/assets/slider3.jpg";
+import Image1 from "@shared/assets/images/slider1.jpg";
+import Image2 from "@shared/assets/images/slider2.jpg";
+import Image3 from "@shared/assets/images/slider3.jpg";
 import SwiperThumnailSlide from '../SwiperThumbnailSlide/SwiperThumbnailSlide';
 import SwiperSlide from '../SwiperSlide/SwiperSlide';
 import SwiperNavigation from '../SwiperNavigation/SwiperNavigation';
