@@ -1,6 +1,5 @@
 import type { CSSProperties, PropsWithChildren } from "react";
 import styles from "./Button.module.scss";
-import { createPortal } from "react-dom";
 
 
 export type Props = {
@@ -22,7 +21,7 @@ function Button({children, width, height, color, background, style, onClick}: Pr
           ...style,
           width: width,
           height: height,
-          color: "green",
+          color: color,
           background: background
         }}
         onClick={onClick}

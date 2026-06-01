@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { fn } from 'storybook/test';
 
 import Button from './Button';
 
@@ -20,7 +19,6 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   name: "Tect",
   args: {
-    children: "asa",
-    width: 50
+    children: "test"
   },
 };
