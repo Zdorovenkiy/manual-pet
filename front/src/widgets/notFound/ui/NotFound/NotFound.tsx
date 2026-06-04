@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./NotFound.module.scss";
 import image404 from "@shared/assets/images/Image404.png";
-import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui';
 import { useNavigate } from 'react-router';
 import { useSiteNavigate } from '@/shared/model';
 

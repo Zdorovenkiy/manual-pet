@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/Button'
+import { Button } from '@/shared/ui'
 import styles from "./PostLoadMore.module.scss";
 import { buttonStyles } from '@/shared/model/styles/buttonStyles';
 

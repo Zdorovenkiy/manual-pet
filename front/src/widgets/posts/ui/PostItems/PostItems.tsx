@@ -1,5 +1,5 @@
 import styles from "./PostItems.module.scss";
-import { ArrowIcon } from '@/shared/ui/ArrowIcon';
+import { ArrowIcon } from '@/shared/ui';
 
 type Props = {
   post: {

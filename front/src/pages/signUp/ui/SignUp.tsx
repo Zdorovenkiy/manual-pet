@@ -1,10 +1,11 @@
-import React from 'react'
+import { AuthContent } from '@/widgets/authContent';
 
 type Props = {}
 
 function SignUp({}: Props) {
+
   return (
-    <div>SignUp</div>
+    <AuthContent />
   )
 }
 

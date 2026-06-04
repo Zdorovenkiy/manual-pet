@@ -1,23 +1,25 @@
 import { Suspense } from 'react'
-import { BaseLayout } from "@app/layout";
+import { layoutsEnum } from "@app/layout";
 import { useRoutes } from 'react-router-dom';
 import { routeConfig } from './routeConfig.tsx';
-import { Loader } from '@/shared/ui/Loader/index.ts';
+import { Loader } from '@/shared/ui';
 
 type Props = {}
 
 function AppRouter({}: Props) {
 
-  const routes = Object.values(routeConfig).map(route => ({
+  const routes = Object.values(routeConfig).map(route => {
+    const Layout = layoutsEnum[route.layout];
+    return {
     ...route,
     element: (
       <Suspense fallback={<Loader />}>
-        <BaseLayout>
+        <Layout>
           {route.element}
-        </BaseLayout>
+        </Layout>
       </Suspense>
     )
-  }));
+  }});
 
   const element = useRoutes(routes);
   

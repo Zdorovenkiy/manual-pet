@@ -1,0 +1,13 @@
+.authFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: $font-color-lightgrey;
+  &_info {
+    font-size: 14px;
+    width: 230px;
+  }
+  &_copyright {
+    font-size: 12px;
+  }
+}

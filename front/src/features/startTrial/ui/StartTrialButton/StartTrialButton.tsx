@@ -1,5 +1,5 @@
 import { useSiteNavigate } from "@/shared/model";
-import { Button } from "@/shared/ui/Button"
+import { Button } from "@/shared/ui"
 
 type Props = {
   background?: string; 

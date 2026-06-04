@@ -1,0 +1,1 @@
+export {default as AuthContent} from "./ui/AuthContent/AuthContent";

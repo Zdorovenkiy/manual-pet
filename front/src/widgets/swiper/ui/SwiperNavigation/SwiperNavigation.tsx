@@ -1,7 +1,7 @@
 import { type RefObject } from 'react'
 import styles from "./SwiperNavigation.module.scss";
 import type { KeenSliderHooks, KeenSliderInstance } from 'keen-slider/react';
-import { ArrowIcon } from '@/shared/ui/ArrowIcon';
+import { ArrowIcon } from '@/shared/ui';
 
 type Props = {
   loaded: boolean,

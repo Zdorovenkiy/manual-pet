@@ -3,8 +3,8 @@ import styles from "./Button.module.scss";
 
 
 export type Props = {
-  width?: number; 
-  height?: number;
+  width?: CSSProperties["width"]; 
+  height?: CSSProperties["height"];
   background?: CSSProperties["background"];
   color?: CSSProperties["color"];
   style?: React.CSSProperties;
