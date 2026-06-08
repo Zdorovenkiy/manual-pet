@@ -1,15 +1,27 @@
 import styles from "./AuthContent.module.scss"
 import AuthHeader from '../AuthHeader/AuthHeader'
 import AuthFooter from '../AuthFooter/AuthFooter'
-import AuthForm from '../AuthForm/AuthForm'
+import AuthFormSignUp from '../AuthFormSignUp/AuthFormSignUp'
+import { authEnum, type TAuthEnumKeys } from "../../model/types/authEnum"
 
-type Props = {}
+type Props = {
+  type: TAuthEnumKeys;
+}
 
-function AuthContent({}: Props) {
+function AuthContent({type}: Props) {
+  const {
+    headerButtonTitle,
+    headerButtonPath,
+    FormComponent
+  } = authEnum[type];
+
   return (
     <div className={styles.authContent}>
-      <AuthHeader />
-      <AuthForm />
+      <AuthHeader 
+        buttonTitle={headerButtonTitle}
+        buttonPath={headerButtonPath}
+      />
+      <FormComponent />
       <AuthFooter />
     </div>
   )

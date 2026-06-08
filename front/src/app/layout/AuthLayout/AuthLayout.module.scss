@@ -9,7 +9,12 @@
   &__thumbnail {
     width: 50%;
     height: 100%;
-    background: orange;
+    max-height: 100vh;
+    // background: orange;
+    // background-image: url("D:/ag/SobesTest/manual-pet/front/src/shared/assets/images/thumbnail-auth.jpg");
+    img {
+      width: 100%;
+    }
   
   }
 }

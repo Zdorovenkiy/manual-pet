@@ -5,7 +5,7 @@ type Props = {}
 function SignUp({}: Props) {
 
   return (
-    <AuthContent />
+    <AuthContent type='SIGN_UP' />
   )
 }
 

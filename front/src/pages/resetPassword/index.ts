@@ -1,0 +1,1 @@
+export { default as resetPassword } from "./ui/ResetPassword"

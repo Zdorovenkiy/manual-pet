@@ -2,14 +2,16 @@ import styles from "./AuthHeader.module.scss"
 import Logo from "@shared/assets/images/Logo.png";
 import { useSiteNavigate } from '@/shared/model';
 import AuthButton from '../AuthButton/AuthButton';
+import type { TRouteEnumKeys } from "@/app/routers";
 
-type Props = {}
+type Props = {
+  buttonTitle: string;
+  buttonPath: TRouteEnumKeys;
+}
 
-function AuthHeader({}: Props) {
+function AuthHeader({buttonTitle, buttonPath}: Props) {
   const navigate = useSiteNavigate();
 
-  AuthButton
-  
   return (
     <div className={styles.authHeader}>
       <img src={Logo} alt="Logo" onClick={() => navigate("MAIN")} />
@@ -17,26 +19,16 @@ function AuthHeader({}: Props) {
         background='transparent'
         border='1px solid #989b91'
         color='#101d1f'
-        width={68}
+        width={"fit-content"}
         height={30}
-        onClick={() => navigate("SIGN_IN")}
+        onClick={() => navigate(buttonPath)}
         style={{
-          fontWeight: 400
+          fontWeight: 400,
+          paddingInline: "12px"
         }}
       >
-        Sign in
+        {buttonTitle}
       </AuthButton>
-      {/* <Button
-        width={68}
-        height={30}
-        style={{
-          borderRadius: 6,
-          letterSpacing: 0
-        }}
-        onClick={() => navigate("SIGN_IN")}
-      >
-        Sign in
-      </Button> */}
     </div>
   )
 }

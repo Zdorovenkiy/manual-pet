@@ -1,17 +1,18 @@
-import styles from "./AuthForm.module.scss"
+import styles from "./AuthFormSignUp.module.scss"
 import { Input } from '@/shared/ui'
 import AuthButton from '../AuthButton/AuthButton'
+import AuthDivider from "../AuthDivider/AuthDivider"
 
 type Props = {}
 
-function AuthForm({}: Props) {
+function AuthFormSignUp({}: Props) {
   return (
-    <div className={styles.authForm}>
-      <div className={styles.authForm__container}>
-        <h1 className={styles.authForm_title}>
+    <div className={styles.authFormSignUp}>
+      <div className={styles.authFormSignUp__container}>
+        <h1 className={styles.authFormSignUp_title}>
           Create an account
         </h1>
-        <div className={styles.authForm__names}>
+        <div className={styles.authFormSignUp__names}>
           <Input placeholder='First name' />
           <Input placeholder='Last name' />
         </div>
@@ -24,10 +25,7 @@ function AuthForm({}: Props) {
         >
           Sign up with Email
         </AuthButton>
-        <div className={styles.authForm__divider}>
-          <span className={styles.authForm__divider_line}></span>
-          <span className={styles.authForm__divider_word}>OR</span>
-        </div>
+        <AuthDivider />
         <AuthButton 
           border='1px solid #989b91'
           color='#101d1f'
@@ -35,7 +33,7 @@ function AuthForm({}: Props) {
         >
           Sign up with google
         </AuthButton>
-        <p className={styles.authForm_termsOfService}>
+        <p className={styles.authFormSignUp_termsOfService}>
           By using Adaline, you are agreeing to our
           <a href="#">Terms of Service</a> and <a href="#">Privacy Policy.</a>
         </p>
@@ -44,4 +42,4 @@ function AuthForm({}: Props) {
   )
 }
 
-export default AuthForm
+export default AuthFormSignUp
