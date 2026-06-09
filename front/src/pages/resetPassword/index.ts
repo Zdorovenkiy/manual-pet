@@ -1,1 +1,1 @@
-export { default as resetPassword } from "./ui/ResetPassword"
+export { default as resetPassword } from "./ui/ResetPasswordPage"

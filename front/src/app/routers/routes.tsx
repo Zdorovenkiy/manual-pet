@@ -1,9 +1,10 @@
 import { NotFoundPage } from "@/pages/notFound";
 import { MainPage } from "@/pages/main";
-import { SignIn } from "@/pages/signIn";
-import { SignUp } from "@/pages/signUp";
+import { SignInPage } from "@/pages/signIn";
+import { SignUpPage } from "@/pages/signUp";
 import type { TRouteEnumValues } from "./types";
-import ResetPassword from "@/pages/resetPassword/ui/ResetPassword";
+import ResetPassword from "@/pages/resetPassword/ui/ResetPasswordPage";
+import { PostPage } from "@/pages/post";
 
 export const ROUTES = {
     NOT_FOUND: {
@@ -24,14 +25,14 @@ export const ROUTES = {
       id: "sign-in",
       name: "Авторизация",
       path: "/sign-in",
-      element: <SignIn />,
+      element: <SignInPage />,
       layout: "AUTH"
     },
     SIGN_UP: {
       id: "sign-up",
       name: "Регистрация",
       path: "/sign-up",
-      element: <SignUp />,
+      element: <SignUpPage />,
       layout: "AUTH"
     },
     RESET_PASSWORD: {
@@ -40,5 +41,12 @@ export const ROUTES = {
       path: "/reset-password",
       element: <ResetPassword />,
       layout: "AUTH"
+    },
+    POST: {
+      id: "post",
+      name: "Пост",
+      path: "/post/:id",
+      element: <PostPage />,
+      layout: "BASE"
     },
 } as const satisfies Record<string, TRouteEnumValues>;
