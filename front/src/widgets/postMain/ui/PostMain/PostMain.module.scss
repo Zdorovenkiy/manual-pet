@@ -1,0 +1,40 @@
+.postMain {
+  &__info {
+    display: flex;
+    padding-inline: 48px;
+
+    &_title {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 64px;
+      padding-block: 26px;
+
+      h1 {
+        font-size: 50px;
+        font-weight: 400;
+        width: 960px;
+      }
+
+      p {
+        color: $font-color-lightgrey;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+    }
+    
+    &_posted {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      border-inline: 1px dashed $font-color-grey;
+      padding: 26px;
+      color: $font-color-lightgrey;
+      font-size: 14px;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}

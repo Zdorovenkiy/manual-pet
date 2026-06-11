@@ -1,0 +1,30 @@
+.postArticle {
+  &__container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-inline: 50px;
+    gap: 50px;
+    &_text {
+      width: 850px;
+      justify-self: center;
+      padding-block: 86px;
+    }
+    &_anchor {
+      width: 400px;
+      padding-block: 36px;
+      padding-inline: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      position: sticky;
+      top: 15px;
+      min-height: 300px;
+      height: fit-content;
+      a {
+        font-size: 14px;
+        text-decoration: none;
+        color: $font-color-lightgrey;
+      }
+    }
+  }
+}

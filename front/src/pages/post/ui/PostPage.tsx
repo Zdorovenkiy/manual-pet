@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from "./PostPage.module.scss"
 import Image1 from "@shared/assets/images/slider1.jpg";
+import { PostMain } from '@/widgets/postMain';
+import { PostArticle } from '@/widgets/postArticle';
 
 type Props = {}
 
@@ -57,31 +59,8 @@ function PostPage({}: Props) {
   return (
     <div className={styles.postPage}>
       <div className={styles.postPage__container}>
-        <div className={styles.postPage__general}>
-          <div className={styles.postPage__general__container}>
-            <div className={styles.postPage__general__container_title}>
-              <h1>{post.title}</h1>
-              <p>{post.description}</p>
-            </div>
-            <div className={styles.postPage__general__container_authorInfo}>
-              <p>By {post.author}</p>
-              <p>{post.date}</p>
-            </div>
-          </div>
-          <img src={Image1} alt="image" />
-        </div>
-        <div className={styles.postPage__article}>
-          <div className={styles.postPage__article__container}>
-            <div 
-              className={styles.postPage__article__container_text}
-              dangerouslySetInnerHTML={{ __html: post.cleanHTML }}
-            />
-            <div className={styles.postPage__article__container_anchor}>
-              <a href='#head1'>Anchor 1</a>
-              <a href='#head2'>Anchor 2</a>
-            </div>
-          </div>
-        </div>
+        <PostMain post={post} />
+        <PostArticle cleanHTML={post.cleanHTML}/>
       </div>
     </div>
   )
