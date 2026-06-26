@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./PostTabs.module.scss";
-import { useTabSelector } from "../../model/useTabSelector";
+import { useTabSelector } from "@/shared/model/hooks/useTabSelector";
 
 type Props = {}
 

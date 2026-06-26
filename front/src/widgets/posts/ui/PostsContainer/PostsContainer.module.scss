@@ -1,6 +1,6 @@
 .postsContainer {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 600px));
+  justify-content: center;
+  row-gap: 30px;
 }

@@ -1,7 +1,8 @@
 import { useSiteNavigate } from "@/shared/model";
 import { Button } from "@/shared/ui"
+import type { ComponentProps } from "react";
 
-type Props = {
+interface Props extends ComponentProps<typeof Button> {
   background?: string; 
   color?: string; 
 }

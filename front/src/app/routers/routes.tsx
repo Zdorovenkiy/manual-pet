@@ -5,6 +5,7 @@ import { SignUpPage } from "@/pages/signUp";
 import type { TRouteEnumValues } from "./types";
 import ResetPassword from "@/pages/resetPassword/ui/ResetPasswordPage";
 import { PostPage } from "@/pages/post";
+import { CatalogPage } from "@/pages/catalog";
 
 export const ROUTES = {
     NOT_FOUND: {
@@ -47,6 +48,13 @@ export const ROUTES = {
       name: "Пост",
       path: "/post/:id",
       element: <PostPage />,
+      layout: "BASE"
+    },
+    CATALOG: {
+      id: "catalog",
+      name: "Каталог",
+      path: "/catalog",
+      element: <CatalogPage />,
       layout: "BASE"
     },
 } as const satisfies Record<string, TRouteEnumValues>;

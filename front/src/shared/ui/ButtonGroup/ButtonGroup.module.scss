@@ -1,0 +1,26 @@
+.buttonGroup {
+  button {
+    border: none;
+    width: fit-content;
+    height: 30px;
+    background: $background-tab;
+    color: black;
+    padding-inline: 6px;
+    transition: all 0.5s ease;
+    &:first-child {
+      border-start-start-radius: 12px;
+      border-end-start-radius: 12px;
+    }
+    &:last-child {
+      border-start-end-radius: 12px;
+      border-end-end-radius: 12px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    &.active {
+      background: $font-color-grey;
+      color: $font-color-white;
+    }
+  }
+}
