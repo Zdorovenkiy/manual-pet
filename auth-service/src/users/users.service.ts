@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -10,24 +10,31 @@ export class UsersService {
     @InjectModel(Users)
     private usersModel: typeof Users,
   ) {}
+
   async create(createUserDto: CreateUserDto) {
-    await this.usersModel.create(createUserDto);
-    return 'This action adds a new user';
+    const user = await this.usersModel.create(createUserDto);
+    return user;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findOneById(id: number) {
+    const user = await this.usersModel.findByPk(id);
+    if (!user) {
+      throw new HttpException("Пользователь не найден", HttpStatus.BAD_REQUEST);
+    } 
+
+    return user;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+  async findOneByEmail(email: string) {
+    const user = await this.usersModel.findOne({
+      where: {
+        email
+      }
+    });
+    if (!user) {
+      throw new HttpException("Пользователь не найден", HttpStatus.BAD_REQUEST);
+    } 
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+    return user;
   }
 }

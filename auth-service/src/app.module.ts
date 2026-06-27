@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { DATABASE_MODELS } from './database/models';
+import { GuardsModule } from './common/guards/guards.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { DATABASE_MODELS } from './database/models';
       logging: false
     }),
     UsersModule, 
-    AuthModule
+    AuthModule,
+    GuardsModule
   ],
 
 })
