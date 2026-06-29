@@ -1,7 +1,7 @@
 import { ConflictException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService, TokenExpiredError } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UniqueConstraintError } from 'sequelize';
@@ -48,18 +48,29 @@ export class AuthService {
   }
 
   async refresh(refreshToken: string): Promise<Pick<ISignTokens, "accessToken">> {
-    try {
-      console.log(refreshToken);
-      
+    try {      
       const { exp, iat, ...payload } = await this.refreshJwt.verifyAsync(refreshToken);
+      const refresh = await this.refreshTokensModel.findOne({
+        where: {
+          userId: payload.sub
+        }
+      })
+      if (!refresh) {
+        throw new UnauthorizedException('Токен истек');
+      }
 
-      console.log("payload ", payload);
+      const isCompare = await bcrypt.compare(refreshToken, refresh.tokenHash);
+
+      if (!isCompare) {
+        throw new UnauthorizedException('Токен неверный');
+      }
+      
       return {
         accessToken: await this.accessJwt.signAsync(payload)
       };
     } catch (error) {
-      if (error instanceof UniqueConstraintError) {
-        throw new ConflictException('Email уже используется');
+      if (error instanceof TokenExpiredError) {
+        throw new UnauthorizedException('Токен истек');
       }
       throw error; 
     }
@@ -72,6 +83,12 @@ export class AuthService {
     }
 
     const payload = { sub: user.id, username: user.firstName };
+
+    await this.refreshTokensModel.destroy({
+      where: {
+        userId: payload.sub,
+      }
+    })
 
     return await this.creatingJwtTokens(payload);
   }
@@ -88,5 +105,18 @@ export class AuthService {
       }
       throw error; 
     }
+  }
+
+  
+  async signOut(email: string): Promise<string> {
+    const user = await this.usersService.findOneByEmail(email);    
+
+    await this.refreshTokensModel.destroy({
+      where: {
+        userId: user.id,
+      }
+    });
+
+    return "Success";
   }
 }

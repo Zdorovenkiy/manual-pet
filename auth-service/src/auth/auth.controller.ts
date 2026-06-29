@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { SignInUserDto } from 'src/users/dto/signIn-user.dto';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { access } from 'fs';
+import { JwtGuard } from 'src/common/guards/jwt.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -18,6 +19,12 @@ export class AuthController {
   @Post("/sign-up")
   signUp(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUp(createUserDto);
+  }
+
+  @UseGuards(JwtGuard)
+  @Post("/sign-out")
+  signOut(@Body() signInUserDto: SignInUserDto) {
+    return this.authService.signOut(signInUserDto.email);
   }
 
   @Post("/refresh")
