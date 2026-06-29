@@ -4,6 +4,7 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { SignInUserDto } from 'src/users/dto/signIn-user.dto';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { access } from 'fs';
 
 @Controller('auth')
 export class AuthController {
@@ -15,7 +16,12 @@ export class AuthController {
   }
 
   @Post("/sign-up")
-  create(@Body() createUserDto: CreateUserDto) {
+  signUp(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUp(createUserDto);
+  }
+
+  @Post("/refresh")
+  refresh(@Body("refreshToken") refreshToken: string) {
+    return this.authService.refresh(refreshToken);
   }
 }

@@ -5,33 +5,83 @@ import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UniqueConstraintError } from 'sequelize';
-
+import { ConfigService } from '@nestjs/config';
+import { IJwtPayload, ISignTokens } from './types/auth.types';
+import { RefreshTokens } from './models/refreshTokens.model';
+import * as bcrypt from 'bcrypt';
+import ms from 'ms';
+import { InjectModel } from '@nestjs/sequelize';
+import { ACCESS_JWT } from 'src/common/guards/providers/access.provider';
+import { REFRESH_JWT } from 'src/common/guards/providers/refresh.provider';
 @Injectable()
 export class AuthService {
   constructor(
-    private jwtService: JwtService,
-    private usersService: UsersService
+    @Inject(ACCESS_JWT)
+    private readonly accessJwt: JwtService,
+
+    @Inject(REFRESH_JWT)
+    private readonly refreshJwt: JwtService,
+
+    private usersService: UsersService,
+    private config: ConfigService,
+
+    @InjectModel(RefreshTokens)
+    private refreshTokensModel: typeof RefreshTokens
   ) {}
 
-  async signIn(email: string, password: string): Promise<{accessToken: string}> {
+  async creatingJwtTokens(payload: IJwtPayload) {
+    const accessToken = await this.accessJwt.signAsync(payload);
+    const refreshToken = await this.refreshJwt.signAsync(payload);
+    const addedTime = ms(this.config.get<ms.StringValue>('JWT_REFRESH_TIME') ?? "30d");
+    const expiresAt = new Date(Date.now() + addedTime);
+    
+    await this.refreshTokensModel.create({
+      userId: payload.sub,
+      tokenHash: await bcrypt.hash(refreshToken, 10),
+      expiresAt
+    })
+
+    return {
+      accessToken,
+      refreshToken
+    };
+  }
+
+  async refresh(refreshToken: string): Promise<Pick<ISignTokens, "accessToken">> {
+    try {
+      console.log(refreshToken);
+      
+      const { exp, iat, ...payload } = await this.refreshJwt.verifyAsync(refreshToken);
+
+      console.log("payload ", payload);
+      return {
+        accessToken: await this.accessJwt.signAsync(payload)
+      };
+    } catch (error) {
+      if (error instanceof UniqueConstraintError) {
+        throw new ConflictException('Email уже используется');
+      }
+      throw error; 
+    }
+  }
+
+  async signIn(email: string, password: string): Promise<ISignTokens> {
     const user = await this.usersService.findOneByEmail(email);    
     if (user?.password !== password) {
       throw new UnauthorizedException();
     }
 
     const payload = { sub: user.id, username: user.firstName };
-    return {
-      accessToken: await this.jwtService.signAsync(payload),
-    };
+
+    return await this.creatingJwtTokens(payload);
   }
 
-  async signUp(createUserDto: CreateUserDto): Promise<any> {
+  async signUp(createUserDto: CreateUserDto): Promise<ISignTokens> {
     try {
       const user = await this.usersService.create(createUserDto);
       const payload = { sub: user.id, username: user.firstName };
-      return {
-        access_token: await this.jwtService.signAsync(payload),
-      };
+
+      return await this.creatingJwtTokens(payload);
     } catch (error) {
       if (error instanceof UniqueConstraintError) {
         throw new ConflictException('Email уже используется');
