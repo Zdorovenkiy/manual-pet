@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui'
+import { Button, ButtonLoader } from '@/shared/ui'
 import { type ComponentProps } from 'react'
 
 interface Props extends ComponentProps<typeof Button>{
@@ -15,11 +15,9 @@ function AuthButton({
   border, 
   width = "100%", 
   height = "34px", 
-  onClick
+  onClick,
+  disabled
 }: Props) {
-
-  
-
   return (
     <Button
       background={background}
@@ -34,8 +32,9 @@ function AuthButton({
         ...style,
       }}
       onClick={onClick}
+      disabled={disabled}
     >
-      {children}
+      {disabled ? <ButtonLoader /> : children}
     </Button>
   )
 }

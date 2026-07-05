@@ -8,10 +8,11 @@ export type Props = {
   background?: CSSProperties["background"];
   color?: CSSProperties["color"];
   style?: React.CSSProperties;
+  disabled?: boolean;
   onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
 }
 
-function Button({children, width, height, color, background, style, onClick}: PropsWithChildren<Props>) {
+function Button({children, width, height, color, background, style, onClick, disabled}: PropsWithChildren<Props>) {
 
   return (
       <button 
@@ -24,6 +25,7 @@ function Button({children, width, height, color, background, style, onClick}: Pr
           background: background
         }}
         onClick={onClick}
+        disabled={disabled}
       >
         {children}
       </button>

@@ -2,7 +2,7 @@ import styles from "./AuthHeader.module.scss"
 import Logo from "@shared/assets/images/Logo.png";
 import { useSiteNavigate } from '@/shared/model';
 import type { TRouteEnumKeys } from "@/app/routers";
-import { AuthButton } from "@/features/authButton";
+import AuthButton from "../AuthButton/AuthButton";
 
 type Props = {
   buttonTitle: string;
