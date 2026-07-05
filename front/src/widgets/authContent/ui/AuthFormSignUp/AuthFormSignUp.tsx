@@ -1,11 +1,12 @@
 import styles from "./AuthFormSignUp.module.scss"
 import { Input } from '@/shared/ui'
-import AuthButton from '../AuthButton/AuthButton'
 import AuthDivider from "../AuthDivider/AuthDivider"
+import { AuthButton } from "@/features/authButton"
 
 type Props = {}
 
 function AuthFormSignUp({}: Props) {
+  // TODO переделать под react-hook-form 
   return (
     <div className={styles.authFormSignUp}>
       <div className={styles.authFormSignUp__container}>

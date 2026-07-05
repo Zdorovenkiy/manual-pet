@@ -1,6 +1,6 @@
+import { AuthButton } from "@/features/authButton"
 import styles from "./AuthFormResetPassword.module.scss"
 import { Input } from '@/shared/ui'
-import AuthButton from '../AuthButton/AuthButton'
 
 type Props = {}
 

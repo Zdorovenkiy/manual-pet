@@ -17,6 +17,9 @@ function AuthButton({
   height = "34px", 
   onClick
 }: Props) {
+
+  
+
   return (
     <Button
       background={background}

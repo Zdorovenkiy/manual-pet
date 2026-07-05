@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from "./AuthFormSignIn.module.scss"
-import AuthButton from '../AuthButton/AuthButton'
 import AuthDivider from '../AuthDivider/AuthDivider'
 import { Input } from '@/shared/ui'
 import { NavLink } from 'react-router'
+import { AuthButton } from '@/features/authButton'
 type Props = {}
 
 function AuthFormSignIn({}: Props) {

@@ -1,8 +1,8 @@
 import styles from "./AuthHeader.module.scss"
 import Logo from "@shared/assets/images/Logo.png";
 import { useSiteNavigate } from '@/shared/model';
-import AuthButton from '../AuthButton/AuthButton';
 import type { TRouteEnumKeys } from "@/app/routers";
+import { AuthButton } from "@/features/authButton";
 
 type Props = {
   buttonTitle: string;
