@@ -1,23 +1,19 @@
-import React from 'react'
 import styles from "./AuthFormSignIn.module.scss"
 import AuthDivider from '../AuthDivider/AuthDivider'
 import { Input } from '@/shared/ui'
 import { NavLink } from 'react-router'
 import AuthButton from '../AuthButton/AuthButton'
-import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { type TAuthUserLogin, useSignInMutation } from '@/features/auth'
 import { EMAIL_REGEX } from '@/shared/model'
+import { registerFormParams } from "@/shared/lib"
+import { useSignInSubmit } from "../../api/useSignInSubmit"
 type Props = {}
 
 function AuthFormSignIn({}: Props) {
-  const { register, handleSubmit } = useForm<TAuthUserLogin>();
-  const [signIn, {isLoading}] = useSignInMutation();
+  const { register, handleSubmit, formState: {errors} } = useForm<TAuthUserLogin>();
+  const {onSubmit, isLoading} = useSignInSubmit();
   
-  async function onSubmit(data: TAuthUserLogin) {
-    const res = await signIn(data);
-    console.log(res);
-  }
-
   return (
     <div className={styles.authFormSignIn}>
       <form 
@@ -31,18 +27,20 @@ function AuthFormSignIn({}: Props) {
           type='email' 
           placeholder='Email'
           register={register('email', {
-            required: true,
-            pattern: {
-              value: EMAIL_REGEX,
-              message: 'Invalid email address'
-            },
+            required: registerFormParams.required,
+            pattern: registerFormParams.pattern,
           })}
         />
+        {errors.email && <p className={styles.authFormSignIn_error}>{errors.email.message}</p>}
         <Input 
           type='password' 
           placeholder='Password'
-          register={register('password', {required: true, minLength: 8})}
+          register={register('password', {
+            required: registerFormParams.required,
+            minLength: registerFormParams.minLength
+          })}
         />
+        {errors.password && <p className={styles.authFormSignIn_error}>{errors.password.message}</p>}
         <AuthButton  
           border='none'
           color='#f8f9f2'

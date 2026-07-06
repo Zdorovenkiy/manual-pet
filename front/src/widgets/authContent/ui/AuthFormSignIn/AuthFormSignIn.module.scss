@@ -9,6 +9,11 @@
     width: 355px;
     gap: 12px;
   }
+
+  &_error {
+    font-size: 12px;
+    color: red;
+  }
   
   &_title {
     font-size: 24px;

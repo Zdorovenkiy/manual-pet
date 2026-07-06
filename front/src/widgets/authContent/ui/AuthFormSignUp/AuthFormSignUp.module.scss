@@ -19,8 +19,13 @@
     display: flex;
     gap: 10px;
     width: 100%;
+    justify-content: space-around;
   }
 
+  &_error {
+    font-size: 12px;
+    color: red;
+  }
 
   &_termsOfService {
     text-align: center;
