@@ -1,18 +1,19 @@
 import { useSignInMutation, type TAuthUserLogin } from "@/features/auth";
-import { tokenStorage } from "@/shared/lib";
+import { getApiError } from "@/shared/lib";
+import type { UseFormClearErrors, UseFormSetError } from "react-hook-form";
 
-export function useSignInSubmit() {
+export function useSignInSubmit(setError: UseFormSetError<TAuthUserLogin>, clearErrors: UseFormClearErrors<TAuthUserLogin>) {
   const [signIn, {isLoading}] = useSignInMutation();
 
   async function onSubmit(data: TAuthUserLogin) {
+    clearErrors("root.server");
     const response = await signIn(data);
-    if (response.error) {
+    const error = getApiError(response.error);
+    if (error) {
+      setError("root.server", { message: error.message})
       console.error(response.error);
       return;
     }
-
-    const { accessToken, refreshToken } = response.data;
-    tokenStorage.setTokens(accessToken, refreshToken);
   }
 
   return {onSubmit, isLoading};

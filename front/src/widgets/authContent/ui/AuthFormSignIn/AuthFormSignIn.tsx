@@ -4,16 +4,15 @@ import { Input } from '@/shared/ui'
 import { NavLink } from 'react-router'
 import AuthButton from '../AuthButton/AuthButton'
 import { useForm } from 'react-hook-form'
-import { type TAuthUserLogin, useSignInMutation } from '@/features/auth'
-import { EMAIL_REGEX } from '@/shared/model'
+import { type TAuthUserLogin } from '@/features/auth'
 import { registerFormParams } from "@/shared/lib"
 import { useSignInSubmit } from "../../api/useSignInSubmit"
 type Props = {}
 
 function AuthFormSignIn({}: Props) {
-  const { register, handleSubmit, formState: {errors} } = useForm<TAuthUserLogin>();
-  const {onSubmit, isLoading} = useSignInSubmit();
-  
+  const { register, handleSubmit, formState: {errors}, setError, clearErrors } = useForm<TAuthUserLogin>();
+  const {onSubmit, isLoading} = useSignInSubmit(setError, clearErrors);
+
   return (
     <div className={styles.authFormSignIn}>
       <form 
@@ -23,6 +22,7 @@ function AuthFormSignIn({}: Props) {
         <h1 className={styles.authFormSignIn_title}>
           Sign in
         </h1>
+        {errors.root?.server && <p className={styles.authFormSignIn_error}>{errors.root?.server.message}</p>}
         <Input 
           type='email' 
           placeholder='Email'

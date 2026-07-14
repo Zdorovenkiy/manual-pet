@@ -1,6 +1,7 @@
 
 import { baseApi } from '@/shared/api';
 import type { IAuthTokens, IAuthUserCreate, TAuthUserLogin } from '../model/authTypes';
+import { authStorage } from '../model/authStorage';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,6 +19,10 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
         body
       }),
+      async onQueryStarted(_, { queryFulfilled }) {
+          const { data } = await queryFulfilled;
+          authStorage.setTokens(data.accessToken, data.refreshToken);
+      },
     }),
 
     signIn: builder.mutation<IAuthTokens, TAuthUserLogin>({
@@ -26,6 +31,10 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
         body
       }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        const { data } = await queryFulfilled;
+        authStorage.setTokens(data.accessToken, data.refreshToken);
+      },
     }),
 
     signOut: builder.mutation<string, TAuthUserLogin>({
@@ -34,6 +43,10 @@ export const authApi = baseApi.injectEndpoints({
         method: 'POST',
         body
       }),
+      async onQueryStarted(_, { queryFulfilled }) {
+        await queryFulfilled;
+        authStorage.clear();
+      },
     }),
 
   }),

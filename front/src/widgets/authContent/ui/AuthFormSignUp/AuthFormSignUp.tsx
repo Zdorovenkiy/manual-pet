@@ -2,17 +2,17 @@ import styles from "./AuthFormSignUp.module.scss"
 import { Input } from '@/shared/ui'
 import AuthDivider from "../AuthDivider/AuthDivider"
 import AuthButton from "../AuthButton/AuthButton"
-import { useSignUpMutation, type IAuthUserCreate } from "@/features/auth"
+import { type IAuthUserCreate } from "@/features/auth"
 import { useForm } from "react-hook-form"
-import { registerFormParams, tokenStorage } from "@/shared/lib"
+import { registerFormParams } from "@/shared/lib"
 import { useSignUpSubmit } from "../../api/useSignUpSubmit"
 
 
 type Props = {}
 
 function AuthFormSignUp({}: Props) {
-  const { register, handleSubmit, formState: {errors} } = useForm<IAuthUserCreate>();
-  const {onSubmit, isLoading} = useSignUpSubmit();
+  const { register, handleSubmit, formState: {errors}, setError, clearErrors } = useForm<IAuthUserCreate>();
+  const {onSubmit, isLoading} = useSignUpSubmit(setError, clearErrors);
   
   return (
     <div className={styles.authFormSignUp}>
@@ -23,6 +23,7 @@ function AuthFormSignUp({}: Props) {
         <h1 className={styles.authFormSignUp_title}>
           Create an account
         </h1>
+        {errors.root?.server && <p className={styles.authFormSignIn_error}>{errors.root?.server.message}</p>}
         <div className={styles.authFormSignUp__names}>
           <Input 
             type="text" 
