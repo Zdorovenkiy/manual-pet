@@ -3,14 +3,19 @@ import {
   configureStore,
   type ReducersMapObject,
 } from '@reduxjs/toolkit';
-import type { StateSchema } from './StoreProvider';
 import { baseApi } from '@/shared/api';
+import {  userReducer } from '@/entities/user';
+import { authReducer } from '@/features/auth';
 
-
+export interface StateSchema {
+  user: ReturnType<typeof userReducer>;
+  auth: ReturnType<typeof authReducer>;
+}
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
-    // user: userReducer,
+    user: userReducer,
+    auth: authReducer
   };
 
   const apiReducers = {

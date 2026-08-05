@@ -1,3 +1,2 @@
-export type { AppDispatch, RootState, createReduxStore } from './store';
-export type { StateSchema } from './StoreProvider';
+export type { AppDispatch, RootState, createReduxStore, StateSchema } from './store';
 export { StoreProvider } from './StoreProvider';

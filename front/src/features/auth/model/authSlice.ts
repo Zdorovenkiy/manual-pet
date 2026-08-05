@@ -1,5 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { authApi } from "../api/authApi";
+import { authStorage } from "@/shared/model";
+import type { RootState } from "@/app/store";
 
 
 interface IAuthSlice {
@@ -7,33 +9,25 @@ interface IAuthSlice {
 }
 
 const initialState: IAuthSlice = {
-    isAuth: false
+    isAuth: !!authStorage.getRefresh(),
 };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // getAccess: () => {
-    //   localStorage.getItem(ACCESS_TOKEN_KEY)
-    // },
-    // getRefresh: () => {
-    //   localStorage.getItem(REFRESH_TOKEN_KEY)
-    // },
-    // setTokens: () => {
-    //   localStorage.setItem(ACCESS_TOKEN_KEY, access);
-    //   localStorage.setItem(REFRESH_TOKEN_KEY, refresh);
-    // },
-    // clearTokens: () => {
-    //   localStorage.removeItem(ACCESS_TOKEN_KEY);
-    //   localStorage.removeItem(REFRESH_TOKEN_KEY);
-    // },
+    setAuth(state, action: PayloadAction<boolean>) {
+      state.isAuth = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    // builder.addMatcher(authApi.endpoints.signIn.matchFulfilled, 
-    //   (state, action) => {
-
-    //   }
-    // ),
   }
 });
+
+export const authReducer = authSlice.reducer;
+export const { setAuth } = authSlice.actions;
+
+export const authSelector = createSelector(
+  [(state: RootState) => state.auth],
+  (auth) => auth.isAuth
+);

@@ -1,12 +1,6 @@
 import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { createReduxStore } from './store';
-
-export interface StateSchema {
-  // user: Partial<IUser>;
-  // product: Partial<IProduct[]>;
-  // order: Partial<IOrder>;
-}
+import { createReduxStore, type StateSchema } from './store';
 
 interface StoreProviderProps {
   children?: ReactNode;

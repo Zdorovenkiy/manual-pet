@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Headers } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInUserDto } from 'src/users/dto/signIn-user.dto';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { JwtGuard } from 'src/common/guards/jwt.guard';
+import { SignOutUserDto } from 'src/users/dto/signOut-user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -20,8 +21,8 @@ export class AuthController {
 
   @UseGuards(JwtGuard)
   @Post("/sign-out")
-  signOut(@Body() signInUserDto: SignInUserDto) {
-    return this.authService.signOut(signInUserDto.email);
+  signOut(@Body() signOutUserDto: SignOutUserDto) {
+    return this.authService.signOut(signOutUserDto.email);
   }
 
   @Post("/refresh")

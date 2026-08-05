@@ -7,10 +7,11 @@ export interface IApiError {
   message: string;
   path: string;
   timestamp: string;
+  error: string;
 }
 
 export function getApiError(
-  error: FetchBaseQueryError | SerializedError | undefined,
+  error: FetchBaseQueryError | SerializedError | undefined | unknown,
 ): IApiError | null {
   if (!isFetchBaseQueryError(error)) {
     return null;

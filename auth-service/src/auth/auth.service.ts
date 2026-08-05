@@ -1,7 +1,7 @@
 import { ConflictException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { JwtService, TokenExpiredError } from '@nestjs/jwt';
+import { JsonWebTokenError, JwtService, TokenExpiredError } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UniqueConstraintError } from 'sequelize';
@@ -47,7 +47,7 @@ export class AuthService {
     };
   }
 
-  async refresh(refreshToken: string): Promise<Pick<ISignTokens, "accessToken">> {
+  async refresh(refreshToken: string): Promise<ISignTokens> {
     try {      
       const { exp, iat, ...payload } = await this.refreshJwt.verifyAsync(refreshToken);
       const refresh = await this.refreshTokensModel.findOne({
@@ -64,13 +64,14 @@ export class AuthService {
       if (!isCompare) {
         throw new UnauthorizedException('Токен неверный');
       }
+      await refresh.destroy();
       
-      return {
-        accessToken: await this.accessJwt.signAsync(payload)
-      };
+      return await this.creatingJwtTokens(payload);
     } catch (error) {
       if (error instanceof TokenExpiredError) {
         throw new UnauthorizedException('Токен истек');
+      } else if (error instanceof JsonWebTokenError) {
+        throw new UnauthorizedException('Токен неверный');
       }
       throw error; 
     }

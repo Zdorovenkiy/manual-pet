@@ -1,5 +1,6 @@
-import { authStorage } from '@/features/auth';
-import { fetchBaseQuery, type BaseQueryFn, type FetchArgs, type FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { authStorage } from '../model';
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL,
