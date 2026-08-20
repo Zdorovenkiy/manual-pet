@@ -3,8 +3,8 @@
   height: 48px;
   border-radius: 22px;
   border: none;
-  background: $button-dark;
-  color: $font-color-white;
+  background: var(--button-bg-main);
+  color: var(--button-color-main);
   text-transform: uppercase;
   letter-spacing: 3px;
   transition: all 0.3s ease;

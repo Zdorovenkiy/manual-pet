@@ -5,7 +5,7 @@
   height: 77px;
   position: relative;
   z-index: 1;
-  background: $background-main;
+  background: var(--background-main);
   font-family: "FragmentMono";
 
   &__container {
@@ -16,5 +16,10 @@
     height: 100%;
     padding: 0 58px;
     z-index: 2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
   }
 }

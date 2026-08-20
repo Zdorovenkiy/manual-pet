@@ -6,16 +6,19 @@ import {
 import { baseApi } from '@/shared/api';
 import {  userReducer } from '@/entities/user';
 import { authReducer } from '@/features/auth';
+import { themeReducer } from '@/features/theme';
 
 export interface StateSchema {
   user: ReturnType<typeof userReducer>;
   auth: ReturnType<typeof authReducer>;
+  theme: ReturnType<typeof themeReducer>;
 }
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
-    auth: authReducer
+    auth: authReducer,
+    theme: themeReducer
   };
 
   const apiReducers = {

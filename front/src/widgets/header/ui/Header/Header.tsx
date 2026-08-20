@@ -8,6 +8,7 @@ import { useDropdownMenu } from "../../model/useDropdownMenu";
 import SignOut, { authSelector } from "@/features/auth";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { ThemeSwitcher } from "@/features/theme";
 type Props = {}
 
 function Header({}: Props) {
@@ -18,12 +19,15 @@ function Header({}: Props) {
       <div className={styles.header__container}>
         <HeaderNav open={open} />
         <HeaderLogo />
-        { isAuth ? (
-            <SignOut />
-          ) : (
-            <StartTrialButton /> 
-          ) 
-        }
+        <div className={styles.header__buttons}>
+          { isAuth ? (
+              <SignOut />
+            ) : (
+              <StartTrialButton /> 
+            ) 
+          }
+          <ThemeSwitcher />
+        </div>
       </div>
       <HeaderMenu isMenuVisible={isMenuVisible} />
     </div>

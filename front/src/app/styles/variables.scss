@@ -1,8 +1,8 @@
 $background-main: #fbfcf5;
-$background-dark: #1d1d1d;
 
-$button-dark: #263633;
-$button-light: #fbfcf5;
+$loader: #1d1d1d;
+
+
 $button-green: #4a6c47;
 
 $background-tab: #e0e3db;
@@ -11,3 +11,15 @@ $font-color-lightgrey: #989b91;
 $font-color-grey: #667572;
 $font-color-black: #101d1f;
 $font-color-white: #f8f9f2;
+
+:root {
+  --background-main: #fbfcf5;
+  --button-bg-main: #263633;
+  --button-color-main: #f8f9f2;
+}
+
+[data-theme='dark'] {
+  --background-main: #1d1d1d;
+  --button-bg-main: #fbfcf5;
+  --button-color-main: #101d1f;
+}
