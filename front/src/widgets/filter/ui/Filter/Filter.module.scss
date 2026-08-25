@@ -1,0 +1,23 @@
+.filter {
+    width: 400px;
+    background: var(--filter-bg-main);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: sticky;
+    height: fit-content;
+    top: 15px;
+    &_item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 8px;
+      h1 {
+        align-self: flex-start;
+        color: var(--font-color-main);
+        font-size: $font-title-main;
+      }
+    }
+  }

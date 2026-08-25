@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./CatalogPage.module.scss"
 import { PostsContainer } from '@/widgets/posts'
-import { ButtonGroup } from '@/shared/ui'
+import { Filter } from '@/widgets/filter'
 type Props = {}
 
 function CatalogPage({}: Props) {
@@ -9,15 +9,7 @@ function CatalogPage({}: Props) {
     <div className={styles.catalogPage}>
       <div className={styles.catalogPage__container}>
         <PostsContainer />
-        <div className={styles.catalogPage__filters}>
-          <div className={styles.catalogPage__filters_item}>
-            <p>Вид пагинации</p>
-            <ButtonGroup labels={["Скролл", "Переключение", "Третий вариант"]} />
-          </div>
-          <div>
-            <p>Категории</p>
-          </div>
-        </div>
+        <Filter />
       </div>
     </div>
   )

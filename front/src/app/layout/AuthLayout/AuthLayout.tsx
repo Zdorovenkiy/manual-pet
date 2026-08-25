@@ -15,7 +15,6 @@ function AuthLayout({children}: PropsWithChildren) {
             backgroundImage: `url(${thumbnail})`,
             backgroundSize: "cover",
             backgroundPositionY: "center"
-
           }}>
           </div>
         </div>

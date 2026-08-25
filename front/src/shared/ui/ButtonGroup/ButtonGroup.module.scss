@@ -1,12 +1,16 @@
 .buttonGroup {
+  display: flex;
+  justify-content: center;
+  
   button {
     border: none;
     width: fit-content;
     height: 30px;
-    background: $background-tab;
-    color: black;
+    background: var(--button-bg-main);
+    color: var(--button-color-main);
     padding-inline: 6px;
     transition: all 0.5s ease;
+    font-size: 16px;
     &:first-child {
       border-start-start-radius: 12px;
       border-end-start-radius: 12px;

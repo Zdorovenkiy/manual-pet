@@ -1,0 +1,10 @@
+.checkboxGroub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px;
+  font-size: $font-text-main;
+  &__item {
+    display: flex;
+    gap: 8px;
+  }
+}

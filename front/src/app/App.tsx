@@ -11,11 +11,12 @@ function App() {
     <StoreProvider>
       <ThemeSync />
       <ErrorBoundary
-      FallbackComponent={AppFallback}
-      onError={(error, info) => {
-        console.error(error, info);
-      }}
-    >
+        FallbackComponent={AppFallback}
+        onError={(error, info) => {
+          console.error("ERROR ", error);
+          console.error("INFO ", info);
+        }}
+      >
       <BrowserRouter>
         <AuthProvider>
           <AppRouter />

@@ -2,7 +2,7 @@ import { Button, ButtonLoader } from '@/shared/ui'
 import { type ComponentProps } from 'react'
 
 interface Props extends ComponentProps<typeof Button>{
-  color: "#f8f9f2" | "#101d1f";
+  color: string;
   background: "#4a6c47" | "transparent";
   border: "none" | "1px solid #989b91";
 }

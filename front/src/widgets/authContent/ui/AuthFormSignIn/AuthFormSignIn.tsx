@@ -7,9 +7,11 @@ import { useForm } from 'react-hook-form'
 import { type TAuthUserLogin } from '@/features/auth'
 import { registerFormParams } from "@/shared/lib"
 import { useSignInSubmit } from "../../api/useSignInSubmit"
-type Props = {}
+type Props = {
+  authColor: string;
+}
 
-function AuthFormSignIn({}: Props) {
+function AuthFormSignIn({authColor}: Props) {
   const { register, handleSubmit, formState: {errors}, setError, clearErrors } = useForm<TAuthUserLogin>();
   const {onSubmit, isLoading} = useSignInSubmit(setError, clearErrors);
 
@@ -52,7 +54,7 @@ function AuthFormSignIn({}: Props) {
         <AuthDivider />
         <AuthButton 
           border='1px solid #989b91'
-          color='#101d1f'
+          color={authColor}
           background='transparent'
           disabled={isLoading}
         >

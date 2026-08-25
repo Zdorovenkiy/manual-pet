@@ -8,9 +8,11 @@ import { registerFormParams } from "@/shared/lib"
 import { useSignUpSubmit } from "../../api/useSignUpSubmit"
 
 
-type Props = {}
+type Props = {
+  authColor: string;
+}
 
-function AuthFormSignUp({}: Props) {
+function AuthFormSignUp({authColor}: Props) {
   const { register, handleSubmit, formState: {errors}, setError, clearErrors } = useForm<IAuthUserCreate>();
   const {onSubmit, isLoading} = useSignUpSubmit(setError, clearErrors);
   
@@ -73,7 +75,7 @@ function AuthFormSignUp({}: Props) {
         <AuthDivider />
         <AuthButton 
           border='1px solid #989b91'
-          color='#101d1f'
+          color={authColor}
           background='transparent'
           disabled={isLoading}
         >

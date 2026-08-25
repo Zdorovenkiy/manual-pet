@@ -1,25 +1,36 @@
 $background-main: #fbfcf5;
-
 $loader: #1d1d1d;
-
-
 $button-green: #4a6c47;
-
 $background-tab: #e0e3db;
-
 $font-color-lightgrey: #989b91;
 $font-color-grey: #667572;
 $font-color-black: #101d1f;
 $font-color-white: #f8f9f2;
 
+$font-text-main: 18px;
+$font-title-main: 20px;
+
 :root {
-  --background-main: #fbfcf5;
-  --button-bg-main: #263633;
-  --button-color-main: #f8f9f2;
+  color-scheme: light dark; 
+  --background-main: light-dark(#fbfcf5, #1d1d1d); 
+  --button-bg-main: light-dark(#263633, #fbfcf5);
+  --button-color-main: light-dark(#f8f9f2, #101d1f);
+  --font-color-main: light-dark(#101d1f, #f8f9f2);
+  --filter-bg-main: light-dark(#e5e6e0, #373737)
 }
 
-[data-theme='dark'] {
-  --background-main: #1d1d1d;
-  --button-bg-main: #fbfcf5;
-  --button-color-main: #101d1f;
+[data-theme="light"] {
+  color-scheme: light;
+  --image-invert-color: invert(0);
 }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --image-invert-color: invert(1);
+}
+
+// [data-theme='dark'] {
+//   --background-main: #1d1d1d;
+//   --button-bg-main: #fbfcf5;
+//   --button-color-main: #101d1f;
+// }

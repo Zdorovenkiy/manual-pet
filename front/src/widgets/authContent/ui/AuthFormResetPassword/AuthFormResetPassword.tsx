@@ -11,7 +11,7 @@ function AuthFormResetPassword({}: Props) {
   //Todo доделать смену пароля
   const { register, handleSubmit, formState: {errors} } = useForm<Pick<IAuthUserCreate, "email">>();
 
-  async function onSubmit(data) {
+  async function onSubmit(data: unknown) {
     // const res = await signUp(data);
     console.log(data);
   }

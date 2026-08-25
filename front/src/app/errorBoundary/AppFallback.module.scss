@@ -1,0 +1,11 @@
+.appFallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  &_btn {
+    width: fit-content;
+  }
+}
