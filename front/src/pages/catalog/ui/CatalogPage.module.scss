@@ -5,4 +5,9 @@
     padding-inline: 50px;
     padding-block: 30px;
   }
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }

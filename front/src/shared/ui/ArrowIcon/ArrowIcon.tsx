@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Arrow from "@shared/assets/icons/arrow-slide.svg?react";
-
+import styles from "./ArrowIcon.module.scss";
 type Props = {
   width?: number;
   height?: number;
@@ -14,19 +14,20 @@ function ArrowIcon({
   width = 25,
   height = 25,
   rotate = 0,
-  color = "black",
+  color,
   style,
   onClick,
 }: Props) {
   return (
     <Arrow
-      color={color}
+      className={styles.arrowIcon}
       width={width}
       height={height}
       style={{ 
-        ...style,
         transform: `rotate(${rotate}deg)`, 
-        cursor: "pointer"
+        cursor: "pointer",
+        color: color,
+        ...style,
       }}
       onClick={onClick}
     />

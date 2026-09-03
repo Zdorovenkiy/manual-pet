@@ -1,0 +1,31 @@
+.pagination {
+  // border: 1px solid black;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  width: fit-content;
+  font-size: $font-text-main;
+  gap: 4px;
+  align-self: center;
+  &_btn {
+    background: var(--button-bg-main);
+    color: var(--button-color-main);
+    min-width: 35px;
+    padding: 6px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background: var(--button-bg-hover);
+    }
+  }
+
+  &_inactive {
+    background: $bg-inactive;
+    color: $font-text-inactive;
+    cursor: unset;
+    pointer-events: none;
+  }
+}

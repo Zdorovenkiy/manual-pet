@@ -9,11 +9,14 @@ $font-color-white: #f8f9f2;
 
 $font-text-main: 18px;
 $font-title-main: 20px;
+$bg-inactive: #989b91;
+$font-text-inactive: #f8f9f2;
 
 :root {
   color-scheme: light dark; 
   --background-main: light-dark(#fbfcf5, #1d1d1d); 
   --button-bg-main: light-dark(#263633, #fbfcf5);
+  --button-bg-hover: light-dark(#5e5e5e, #dcddd7);
   --button-color-main: light-dark(#f8f9f2, #101d1f);
   --font-color-main: light-dark(#101d1f, #f8f9f2);
   --filter-bg-main: light-dark(#e5e6e0, #373737)
