@@ -22,6 +22,11 @@
     }
   }
 
+  &_active {
+    background: $bg-inactive;
+    color: $font-text-inactive;
+  }
+
   &_inactive {
     background: $bg-inactive;
     color: $font-text-inactive;
